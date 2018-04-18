@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+
+	<script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+
+	<title>Demo Sensor Visualisation</title>
+
+
+
+</head>
+
+<body>
+
+	<div id="seat"> <p> 001 </p> </div>
+
+
+
+	<div id="chart"></div>
+
+
+
+	<script type="text/javascript">
+
+		
+
+		var pubnub = new PubNub(
+
+				{
+
+					publishKey: 'pub-c-0379fb69-98c0-489c-833a-cdb4373db148',
+
+					subscribeKey: 'sub-c-39d5d1fa-2de9-11e8-85fd-a682db239c54'
+
+
+
+				}
+
+			);
+
+
+
+		var channel = 'Channel-19kfm0u0';
+
+
+
+
+		eon.chart(
+
+				{
+
+					channels: [channel],
+
+					//history: true,
+
+					flow: true,
+
+					pubnub: pubnub,
+
+
+
+					generate:{
+
+						bindto: '#chart',
+
+						data: {
+
+
+							type: 'spline',
+
+							labels: false
+
+						}
+
+					}
+
+				}
+
+			);
+
+
+ pubnub.addListener({
+
+        message: function(m){ 
+
+          console.log(m.message.eon.sensor);
+
+        },
+
+        error: function(e){ console.log(e);
+
+        }
+
+      });
+
+
+
+
+	</script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

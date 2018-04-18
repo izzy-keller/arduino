@@ -1,0 +1,9 @@
+* {
+	font-family:arial;
+}
+
+#seat {
+	background-color:red;
+	width:30%;
+	height:400px;
+}
